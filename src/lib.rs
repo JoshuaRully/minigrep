@@ -24,7 +24,7 @@ impl Config {
                 query,
                 file_path,
                 ignore_case,
-            })
+            });
         }
 
         let query = args[1].clone();
