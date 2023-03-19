@@ -13,7 +13,20 @@ impl Config {
         if args.len() < 3 {
             return Err("Not enough arguments");
         }
-        // using clone for simplicity
+
+        if args.len() > 3 {
+            // argument overrides envar
+            let ignore_case = args[1].clone().contains("IGNORE_CASE");
+            let query = args[2].clone();
+            let file_path = args[3].clone();
+
+            return Ok(Config {
+                query,
+                file_path,
+                ignore_case,
+            })
+        }
+
         let query = args[1].clone();
         let file_path = args[2].clone();
 
